@@ -1,30 +1,49 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import Tippy from '@tippyjs/react/headless';
 import styled from 'styled-components';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { IoSearchSharp } from 'react-icons/io5';
 import { FaSpinner } from 'react-icons/fa';
+
 import TiktokLogo from '~/assets/images/TiktokLogo.svg';
-import { variables as globalVars } from '~/components';
+import { variables as globalVars, Popper, AccountItem } from '~/components';
 
 const Header = () => {
+  const [searchResults, setSearchResults] = useState([]);
+
   return (
     <Wrapper>
       <div className="inner">
         <div className="logo">
           <img src={TiktokLogo} alt="Tiktok" />
         </div>
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Search accounts and videos"
-            spellCheck="false"
-          />
-          <button className="clear">{<IoMdCloseCircle />}</button>
-
-          {/* <FaSpinner className="loading" /> */}
-
-          <button className="search-btn">{<IoSearchSharp />}</button>
-        </div>
+        <Tippy
+          visible={searchResults.length > 0}
+          interactive={true}
+          render={(attrs) => (
+            <div className="search-result" tabIndex={1} {...attrs}>
+              <Popper>
+                <h4 className="search-title">Accounts</h4>
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+              </Popper>
+            </div>
+          )}
+        >
+          <div className="search">
+            <input
+              type="text"
+              placeholder="Search accounts and videos"
+              spellCheck="false"
+            />
+            <button className="clear">{<IoMdCloseCircle />}</button>
+            {/* <FaSpinner className="loading" /> */}
+            <button className="search-btn">{<IoSearchSharp />}</button>
+          </div>
+        </Tippy>
         <div className="actions"></div>
       </div>
     </Wrapper>
@@ -52,6 +71,11 @@ const Wrapper = styled.header`
     align-items: center;
     width: 1150px;
     height: 100%;
+
+    .search,
+    .search-result {
+      width: 361px;
+    }
 
     .search {
       position: relative;
@@ -118,6 +142,13 @@ const Wrapper = styled.header`
       :focus-within {
         border-color: rgba(22, 24, 35, 0.2);
       }
+    }
+
+    .search-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      color: rgba(22, 24, 35, 0.5);
     }
 
     .actions {
