@@ -1,2 +1,3 @@
 import GlobalStyles from './GlobalStyles';
-export { GlobalStyles };
+import variables from './variables';
+export { GlobalStyles, variables };
