@@ -1,14 +1,29 @@
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from '~/routes';
 function App() {
   return (
-    <div className="App">
-      <h1>React App</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quae
-        recusandae sit quo qui cupiditate, obcaecati id quibusdam asperiores,
-        quisquam voluptates. Minima odio corrupti aut perferendis molestias
-        error ducimus odit.
-      </p>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Layout = route.layout || Fragment;
+            const Page = route.component;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
