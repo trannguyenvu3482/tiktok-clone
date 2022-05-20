@@ -6,7 +6,12 @@ import { IoSearchSharp } from 'react-icons/io5';
 import { FaSpinner } from 'react-icons/fa';
 
 import TiktokLogo from '~/assets/images/TiktokLogo.svg';
-import { variables as globalVars, Popper, AccountItem } from '~/components';
+import {
+  variables as globalVars,
+  Popper,
+  AccountItem,
+  Button,
+} from '~/components';
 
 const Header = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -44,7 +49,10 @@ const Header = () => {
             <button className="search-btn">{<IoSearchSharp />}</button>
           </div>
         </Tippy>
-        <div className="actions"></div>
+        <div className="actions">
+          <Button text>Upload</Button>
+          <Button primary>Login</Button>
+        </div>
       </div>
     </Wrapper>
   );
@@ -152,6 +160,7 @@ const Wrapper = styled.header`
     }
 
     .actions {
+      display: flex;
     }
   }
 `;
