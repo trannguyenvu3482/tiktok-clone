@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-const Popper = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+const Popper = ({ children, className = '' }) => {
+  return (
+    <Wrapper>
+      <div className={className}>{children}</div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
@@ -13,5 +17,9 @@ const Wrapper = styled.div`
   padding-top: 8px;
   box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
   border-radius: 8px;
+
+  .menu-popper {
+    padding-bottom: 8px;
+  }
 `;
 export default Popper;

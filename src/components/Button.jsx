@@ -13,6 +13,7 @@ const Button = ({
   text = false,
   disabled = false,
   rounded = false,
+  thin = false,
   leftIcon,
   rightIcon,
   className,
@@ -29,7 +30,8 @@ const Button = ({
     (text ? ' text' : '') +
     (disabled ? ' disabled' : '') +
     (rounded ? ' rounded' : '') +
-    (className ? ` ${className}` : '');
+    (className ? ` ${className}` : '') +
+    (thin ? ' thin' : '');
   const props = {
     onClick,
     passprops,
@@ -64,7 +66,7 @@ const Button = ({
 
 const Wrapper = styled.div`
   + .wrap {
-    margin-left: 8px;
+    margin-left: 16px;
   }
   .wrapper {
     min-width: 100px;
@@ -124,6 +126,15 @@ const Wrapper = styled.div`
       background-color: rgba(254, 44, 85, 0.06);
     }
   }
+  .thin {
+    font-weight: 600;
+    border-radius: 2px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+
+    :hover {
+      background-color: rgba(22, 24, 35, 0.03);
+    }
+  }
 
   .small {
     min-width: 88px;
@@ -139,6 +150,13 @@ const Wrapper = styled.div`
     }
   }
   // Icon
+  .icon {
+    display: inline-flex;
+    width: 16px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
   .icon + .title,
   .title + .icon {
     margin-left: 8px;

@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import styled from 'styled-components';
-import { IoMdCloseCircle } from 'react-icons/io';
-import { IoSearchSharp } from 'react-icons/io5';
+
+import { IoMdCloseCircle, IoMdHelpCircleOutline } from 'react-icons/io';
+import {
+  IoSearchSharp,
+  IoEarthSharp,
+  IoEllipsisVertical,
+} from 'react-icons/io5';
+import { HiPlus } from 'react-icons/hi';
 import { FaSpinner } from 'react-icons/fa';
+import { MdOutlineKeyboardAlt } from 'react-icons/md';
 
 import TiktokLogo from '~/assets/images/TiktokLogo.svg';
 import {
@@ -11,7 +18,24 @@ import {
   Popper,
   AccountItem,
   Button,
+  PopperMenu,
 } from '~/components';
+
+const MENU_ITEMS = [
+  {
+    icon: <IoEarthSharp />,
+    title: 'English',
+  },
+  {
+    icon: <IoMdHelpCircleOutline />,
+    title: 'Feedback and help',
+    to: '/feedback',
+  },
+  {
+    icon: <MdOutlineKeyboardAlt />,
+    title: 'Keyboard shortcuts',
+  },
+];
 
 const Header = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -50,8 +74,16 @@ const Header = () => {
           </div>
         </Tippy>
         <div className="actions">
-          <Button text>Upload</Button>
+          <Button thin leftIcon={<HiPlus />}>
+            Upload
+          </Button>
           <Button primary>Login</Button>
+
+          <PopperMenu items={MENU_ITEMS}>
+            <button className="more-btn">
+              <IoEllipsisVertical />
+            </button>
+          </PopperMenu>
         </div>
       </div>
     </Wrapper>
@@ -161,6 +193,12 @@ const Wrapper = styled.header`
 
     .actions {
       display: flex;
+    }
+    .more-btn {
+      font-size: 2rem;
+      margin-left: 24px;
+      background-color: transparent;
+      padding: 8px;
     }
   }
 `;
