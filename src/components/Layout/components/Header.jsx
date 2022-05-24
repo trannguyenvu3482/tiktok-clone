@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react/';
+import HeadlessTippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
 import styled from 'styled-components';
 
+import { BiMessageAltMinus } from 'react-icons/bi';
 import { IoMdCloseCircle, IoMdHelpCircleOutline } from 'react-icons/io';
 import {
   IoSearchSharp,
   IoEarthSharp,
   IoEllipsisVertical,
+  IoPaperPlaneOutline,
 } from 'react-icons/io5';
 import { HiPlus } from 'react-icons/hi';
 import { FaSpinner } from 'react-icons/fa';
@@ -25,6 +29,13 @@ const MENU_ITEMS = [
   {
     icon: <IoEarthSharp />,
     title: 'English',
+    children: {
+      title: 'Language',
+      data: [
+        { type: 'language', code: 'en', title: 'English' },
+        { type: 'language', code: 'vi', title: 'Tiếng Việt' },
+      ],
+    },
   },
   {
     icon: <IoMdHelpCircleOutline />,
@@ -39,6 +50,19 @@ const MENU_ITEMS = [
 
 const Header = () => {
   const [searchResults, setSearchResults] = useState([]);
+  const currentUser = true;
+
+  // Handle logic
+  const handleMenuChange = (menuItem) => {
+    switch (menuItem.type) {
+      case 'language':
+        // Handle language selection
+        break;
+      default:
+        // Handle other menu items
+        break;
+    }
+  };
 
   return (
     <Wrapper>
@@ -46,7 +70,7 @@ const Header = () => {
         <div className="logo">
           <img src={TiktokLogo} alt="Tiktok" />
         </div>
-        <Tippy
+        <HeadlessTippy
           visible={searchResults.length > 0}
           interactive={true}
           render={(attrs) => (
@@ -72,17 +96,49 @@ const Header = () => {
             {/* <FaSpinner className="loading" /> */}
             <button className="search-btn">{<IoSearchSharp />}</button>
           </div>
-        </Tippy>
-        <div className="actions">
-          <Button thin leftIcon={<HiPlus />}>
-            Upload
-          </Button>
-          <Button primary>Login</Button>
+        </HeadlessTippy>
 
-          <PopperMenu items={MENU_ITEMS}>
-            <button className="more-btn">
-              <IoEllipsisVertical />
-            </button>
+        <div className="actions">
+          {currentUser ? (
+            <>
+              <Button thin leftIcon={<HiPlus />}>
+                Upload
+              </Button>
+
+              <Tippy delay={[0, 0]} content="Message" placement="bottom">
+                <button className="action-btn">
+                  <IoPaperPlaneOutline className="action-btn-icon" />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 0]} content="Inbox" placement="bottom">
+                <button className="action-btn">
+                  <BiMessageAltMinus className="action-btn-icon" />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button thin leftIcon={<HiPlus />}>
+                Upload
+              </Button>
+              <Button primary>Log in</Button>
+            </>
+          )}
+
+          <PopperMenu items={MENU_ITEMS} onChange={handleMenuChange}>
+            {currentUser ? (
+              <>
+                <img
+                  className="user-avatar"
+                  src="https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/1674225874179077~c5_100x100.jpeg?x-expires=1653552000&x-signature=LYHHc61C6usPlWhE%2FSoH54qSYfg%3D"
+                  alt="Nguyen Van B"
+                />
+              </>
+            ) : (
+              <button className="more-btn">
+                <IoEllipsisVertical />
+              </button>
+            )}
           </PopperMenu>
         </div>
       </div>
@@ -111,6 +167,7 @@ const Wrapper = styled.header`
     align-items: center;
     width: 1150px;
     height: 100%;
+    padding: 0 24px;
 
     .search,
     .search-result {
@@ -193,12 +250,35 @@ const Wrapper = styled.header`
 
     .actions {
       display: flex;
+      align-items: center;
     }
+
+    .action-btn {
+      background-color: transparent;
+      color: #161623;
+      padding: 4px 12px;
+      cursor: pointer;
+
+      &-icon {
+        font-size: 2.4rem;
+      }
+    }
+
     .more-btn {
       font-size: 2rem;
       margin-left: 24px;
       background-color: transparent;
       padding: 8px;
+      cursor: pointer;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-left: 12px;
+      cursor: pointer;
     }
   }
 `;

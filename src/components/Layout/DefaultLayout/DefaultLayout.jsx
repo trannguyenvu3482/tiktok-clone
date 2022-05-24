@@ -22,7 +22,12 @@ const Wrapper = styled.div`
 
   .container {
     width: 1150px;
-    min-height: 1000px;
+    display: flex;
+    padding: 0 24px;
+  }
+
+  .content {
+    flex: 1;
   }
 `;
 

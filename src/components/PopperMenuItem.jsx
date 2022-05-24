@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import { Button } from '~/components';
 
-const PopperMenuItem = ({ data }) => {
+const PopperMenuItem = ({ data, onClick }) => {
   return (
     <Wrapper>
-      <Button className="menu-item" leftIcon={data.icon} to={data.to}>
+      <Button
+        className="menu-item"
+        leftIcon={data.icon}
+        to={data.to}
+        onClick={onClick}
+      >
         {data.title}
       </Button>
     </Wrapper>
@@ -18,8 +23,9 @@ const Wrapper = styled.div`
     text-align: left;
     align-items: center;
     border-radius: 0;
-    font-weight: 600;
+    font-weight: 500;
     padding: 10px 16px;
+    line-height: 1.8rem;
 
     :hover {
       background-color: rgba(22, 24, 35, 0.03);
