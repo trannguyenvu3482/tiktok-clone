@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from '../components';
+import { variables } from '~/components';
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
 
@@ -21,9 +22,10 @@ const Wrapper = styled.div`
   align-items: center;
 
   .container {
-    width: 1150px;
+    width: ${variables.defaultLayoutWidth};
     display: flex;
-    padding: 0 24px;
+    padding: 0 ${variables.defaultLayoutHorizontalSpacer};
+    margin-top: ${variables.defaultLayoutHeaderHeight};
   }
 
   .content {
