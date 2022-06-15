@@ -1,10 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
+import { Image } from '../components';
 import { FaCheckCircle } from 'react-icons/fa';
 const AccountItem = () => {
   return (
     <Wrapper>
-      <img
+      <Image
         className="avatar"
         src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ea0854578085ab26effc2c7b8cefa270~c5_100x100.jpeg?x-expires=1652965200&x-signature=NI8wVOTGAjgjBTAZpjMAAxERzwU%3D"
         alt="Hoaa"
