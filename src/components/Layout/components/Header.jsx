@@ -29,6 +29,7 @@ import {
   PopperMenu,
   Image,
 } from '~/components';
+import { InboxIcon, MessageIcon, SearchIcon } from '~/components/Icons';
 
 const MENU_ITEMS = [
   {
@@ -137,12 +138,12 @@ const Header = () => {
 
               <Tippy delay={[0, 0]} content="Message" placement="bottom">
                 <button className="action-btn">
-                  <IoPaperPlaneOutline className="action-btn-icon" />
+                  <MessageIcon className="action-btn-icon" />
                 </button>
               </Tippy>
               <Tippy delay={[0, 0]} content="Inbox" placement="bottom">
                 <button className="action-btn">
-                  <BiMessageAltMinus className="action-btn-icon" />
+                  <InboxIcon className="action-btn-icon" />
                 </button>
               </Tippy>
             </>
@@ -192,6 +193,11 @@ const Wrapper = styled.header`
   box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  .logo {
+    display: flex;
+  }
 
   .inner {
     display: flex;
@@ -199,7 +205,7 @@ const Wrapper = styled.header`
     align-items: center;
     width: 1150px;
     height: 100%;
-    padding: 0 24px;
+    padding: 0 24px 0 20px;
 
     .search,
     .search-result {
@@ -287,6 +293,7 @@ const Wrapper = styled.header`
 
     .action-btn {
       background-color: transparent;
+      display: flex;
       color: #161623;
       padding: 4px 12px;
       cursor: pointer;
@@ -305,6 +312,7 @@ const Wrapper = styled.header`
     }
 
     .user-avatar {
+      display: flex;
       width: 32px;
       height: 32px;
       object-fit: cover;

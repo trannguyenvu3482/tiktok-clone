@@ -106,6 +106,7 @@ const Wrapper = styled.div`
   .primary {
     background-color: #fe2c55;
     color: #fff;
+    font-weight: 600;
     border-color: #fe2c55;
 
     :hover {
