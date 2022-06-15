@@ -11,14 +11,36 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
 
+  const fetchData = async () => {
+    try {
+      if (!searchValue.trim()) {
+        setSearchResults([]);
+        return;
+      }
+
+      setLoading(true);
+
+      const response = await fetch(
+        `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+          searchValue,
+        )}&type=less`,
+      );
+      const data = await response.json();
+      setSearchResults(data.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      setSearchResults([1, 2, 3]);
-    }, 0);
-  }, []);
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchValue]);
 
   const handleClear = () => {
     setSearchValue('');
@@ -39,11 +61,9 @@ const Search = () => {
           <div className="search-result" tabIndex={1} {...attrs}>
             <Popper>
               <h4 className="search-title">Accounts</h4>
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
+              {searchResults.map((result) => {
+                return <AccountItem key={result.id} data={result} />;
+              })}
             </Popper>
           </div>
         )}
@@ -56,17 +76,21 @@ const Search = () => {
             spellCheck="false"
             value={searchValue}
             ref={inputRef}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value.startsWith(' ')) return;
+              setSearchValue(e.target.value);
+            }}
             onFocus={() => setShowResults(true)}
           />
 
-          {searchValue && (
+          {searchValue && !loading && (
             <button className="clear" onClick={handleClear}>
               {<IoMdCloseCircle />}
             </button>
           )}
 
-          {/* <FaSpinner className="loading" /> */}
+          {loading && <FaSpinner className="loading" />}
+
           <button className="search-btn">{<SearchIcon />}</button>
         </div>
       </HeadlessTippy>
@@ -120,6 +144,19 @@ const Wrapper = styled.div`
       transform: translateY(-50%);
       color: rgba(22, 24, 35, 0.34);
       font-size: 16px;
+    }
+
+    .loading {
+      animation: spinner 0.8s linear infinite;
+    }
+
+    @keyframes spinner {
+      from {
+        transform: translateY(-50%) rotate(0);
+      }
+      to {
+        transform: translateY(-50%) rotate(360deg);
+      }
     }
 
     .search-btn {

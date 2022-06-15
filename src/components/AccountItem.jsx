@@ -1,22 +1,21 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Image } from '../components';
 import { FaCheckCircle } from 'react-icons/fa';
-const AccountItem = () => {
+const AccountItem = ({ data }) => {
   return (
-    <Wrapper>
-      <Image
-        className="avatar"
-        src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ea0854578085ab26effc2c7b8cefa270~c5_100x100.jpeg?x-expires=1652965200&x-signature=NI8wVOTGAjgjBTAZpjMAAxERzwU%3D"
-        alt="Hoaa"
-      />
-      <div className="info">
-        <h4 className="name">
-          <span>hoaa.hanassii</span>
-          <FaCheckCircle className="check" />
-        </h4>
-        <span className="username">Đào Lê Phương Hoa</span>
-      </div>
-    </Wrapper>
+    <Link to={`/@${data.nickname}`}>
+      <Wrapper>
+        <Image className="avatar" src={data.avatar} alt={data.full_name} />
+        <div className="info">
+          <h4 className="name">
+            <span>{data.full_name}</span>
+            {data.tick && <FaCheckCircle className="check" />}
+          </h4>
+          <span className="username">{data.nickname}</span>
+        </div>
+      </Wrapper>
+    </Link>
   );
 };
 
