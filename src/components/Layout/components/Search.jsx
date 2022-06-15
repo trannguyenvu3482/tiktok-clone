@@ -5,6 +5,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { FaSpinner } from 'react-icons/fa';
 import { variables as globalVars, Popper, AccountItem } from '~/components';
+import { useDebounce } from '~/hooks';
 import { SearchIcon } from '~/components/Icons';
 
 const Search = () => {
@@ -13,11 +14,13 @@ const Search = () => {
   const [showResults, setShowResults] = useState(true);
   const [loading, setLoading] = useState(false);
 
+  const debounced = useDebounce(searchValue, 500);
+
   const inputRef = useRef();
 
   const fetchData = async () => {
     try {
-      if (!searchValue.trim()) {
+      if (!debounced.trim()) {
         setSearchResults([]);
         return;
       }
@@ -26,7 +29,7 @@ const Search = () => {
 
       const response = await fetch(
         `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-          searchValue,
+          debounced,
         )}&type=less`,
       );
       const data = await response.json();
@@ -40,7 +43,7 @@ const Search = () => {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchValue]);
+  }, [debounced]);
 
   const handleClear = () => {
     setSearchValue('');
