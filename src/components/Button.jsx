@@ -69,6 +69,7 @@ const Wrapper = styled.div`
     margin-left: 16px;
   }
   .wrapper {
+    font-family: 'ProximaNova', sans-serif;
     min-width: 100px;
     padding: 9px 16px;
     border-radius: 4px;

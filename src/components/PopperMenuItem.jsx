@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     justify-content: flex-start !important;
     text-align: left;
     align-items: center;
-    font-weight: 400;
+    font-weight: 600;
     border-radius: 0;
     padding: 10px 16px;
     line-height: 1.8rem;

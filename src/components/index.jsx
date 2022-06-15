@@ -6,6 +6,8 @@ import PopperMenuHeader from './PopperMenuHeader';
 import variables from './variables';
 import AccountItem from './AccountItem';
 import Button from './Button';
+import Image from './Image';
+
 export {
   GlobalStyles,
   Popper,
@@ -14,5 +16,6 @@ export {
   PopperMenu,
   PopperMenuItem,
   PopperMenuHeader,
+  Image,
   variables,
 };
