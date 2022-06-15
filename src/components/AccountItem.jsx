@@ -39,17 +39,21 @@ const Wrapper = styled.div`
   }
 
   .info {
+    display: flex;
+    flex-direction: column;
     flex: 1;
   }
 
   .name {
     font-size: 1.6rem;
+    display: flex;
+    align-items: center;
     font-weight: 600;
     color: #333;
   }
 
   .check {
-    margin-left: 6px;
+    margin-left: 8px;
     color: rgb(32, 213, 236);
   }
   .username {

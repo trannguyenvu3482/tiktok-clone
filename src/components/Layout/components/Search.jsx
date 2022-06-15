@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -8,18 +8,32 @@ import { variables as globalVars, Popper, AccountItem } from '~/components';
 import { SearchIcon } from '~/components/Icons';
 
 const Search = () => {
+  const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(true);
+
+  const inputRef = useRef();
 
   useEffect(() => {
     setTimeout(() => {
       setSearchResults([1, 2, 3]);
     }, 0);
-  });
+  }, []);
+
+  const handleClear = () => {
+    setSearchValue('');
+    setSearchResults([]);
+    inputRef.current.focus();
+  };
+
+  const handleHideResult = () => {
+    setShowResults(false);
+  };
 
   return (
     <Wrapper>
       <HeadlessTippy
-        visible={searchResults.length > 0}
+        visible={showResults && searchResults.length > 0}
         interactive={true}
         render={(attrs) => (
           <div className="search-result" tabIndex={1} {...attrs}>
@@ -33,15 +47,26 @@ const Search = () => {
             </Popper>
           </div>
         )}
+        onClickOutside={handleHideResult}
       >
         <div className="search">
           <input
             type="text"
             placeholder="Search accounts and videos"
             spellCheck="false"
+            value={searchValue}
+            ref={inputRef}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onFocus={() => setShowResults(true)}
           />
-          <button className="clear">{<IoMdCloseCircle />}</button>
-          <FaSpinner className="loading" />
+
+          {searchValue && (
+            <button className="clear" onClick={handleClear}>
+              {<IoMdCloseCircle />}
+            </button>
+          )}
+
+          {/* <FaSpinner className="loading" /> */}
           <button className="search-btn">{<SearchIcon />}</button>
         </div>
       </HeadlessTippy>
