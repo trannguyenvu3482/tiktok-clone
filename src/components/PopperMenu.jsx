@@ -34,7 +34,8 @@ const PopperMenu = ({ children, items = [], onChange = defFunc }) => {
     <Wrapper>
       <Tippy
         interactive={true}
-        delay={[0, 700]}
+        delay={[0, 500]}
+        offset={[12, 8]}
         placement="bottom-end"
         render={(attrs) => (
           <div className="menu-items" tabIndex="-1" {...attrs}>

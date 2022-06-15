@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { Button } from '~/components';
 
 const PopperMenuItem = ({ data, onClick }) => {
+  const classes = `menu-item ${data.separate && 'separate'}`;
   return (
     <Wrapper>
       <Button
-        className="menu-item"
+        className={classes}
         leftIcon={data.icon}
         to={data.to}
         onClick={onClick}
@@ -22,10 +23,14 @@ const Wrapper = styled.div`
     justify-content: flex-start !important;
     text-align: left;
     align-items: center;
+    font-weight: 400;
     border-radius: 0;
-    font-weight: 500;
     padding: 10px 16px;
     line-height: 1.8rem;
+
+    &.separate {
+      border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
 
     :hover {
       background-color: rgba(22, 24, 35, 0.03);

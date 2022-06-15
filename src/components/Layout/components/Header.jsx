@@ -4,7 +4,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import styled from 'styled-components';
 
-import { BiMessageAltMinus } from 'react-icons/bi';
+import { BiMessageAltMinus, BiUser } from 'react-icons/bi';
 import { IoMdCloseCircle, IoMdHelpCircleOutline } from 'react-icons/io';
 import {
   IoSearchSharp,
@@ -13,8 +13,12 @@ import {
   IoPaperPlaneOutline,
 } from 'react-icons/io5';
 import { HiPlus } from 'react-icons/hi';
-import { FaSpinner } from 'react-icons/fa';
-import { MdOutlineKeyboardAlt } from 'react-icons/md';
+import { FaSpinner, FaCoins } from 'react-icons/fa';
+import {
+  MdOutlineKeyboardAlt,
+  MdOutlineSettings,
+  MdOutlineLogout,
+} from 'react-icons/md';
 
 import TiktokLogo from '~/assets/images/TiktokLogo.svg';
 import {
@@ -63,6 +67,31 @@ const Header = () => {
         break;
     }
   };
+
+  const userMenu = [
+    {
+      icon: <BiUser />,
+      title: 'View profile',
+      to: '/@hoaa',
+    },
+    {
+      icon: <FaCoins />,
+      title: 'Get coins',
+      to: '/coin',
+    },
+    {
+      icon: <MdOutlineSettings />,
+      title: 'Settings',
+      to: '/settings',
+    },
+    ...MENU_ITEMS,
+    {
+      icon: <MdOutlineLogout />,
+      title: 'Log out',
+      to: '/logout',
+      separate: true,
+    },
+  ];
 
   return (
     <Wrapper>
@@ -125,15 +154,16 @@ const Header = () => {
             </>
           )}
 
-          <PopperMenu items={MENU_ITEMS} onChange={handleMenuChange}>
+          <PopperMenu
+            items={currentUser ? userMenu : MENU_ITEMS}
+            onChange={handleMenuChange}
+          >
             {currentUser ? (
-              <>
-                <img
-                  className="user-avatar"
-                  src="https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/1674225874179077~c5_100x100.jpeg?x-expires=1653552000&x-signature=LYHHc61C6usPlWhE%2FSoH54qSYfg%3D"
-                  alt="Nguyen Van B"
-                />
-              </>
+              <img
+                className="user-avatar"
+                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/65d3c6b1d1e205c75536ccf1f26d552d~c5_100x100.jpeg?x-expires=1655434800&x-signature=KeYcNFDCc2W7Z7LTmzAgbPaqR2Y%3D"
+                alt="Nguyen Van B"
+              />
             ) : (
               <button className="more-btn">
                 <IoEllipsisVertical />

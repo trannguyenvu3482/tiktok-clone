@@ -18,7 +18,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
-  color: #333;
+  color: #161823;
 }
 
 button,
@@ -42,6 +42,10 @@ body {
     font-size: 1.6rem;
     line-height: 2.2rem;
     padding: 4px 0;
+  }
+
+  .tippy-content {
+    padding: 8px 9px;
   }
 
   .tippy-arrow {
