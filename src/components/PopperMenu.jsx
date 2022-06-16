@@ -54,7 +54,7 @@ const PopperMenu = ({
                   }}
                 />
               )}
-              {renderItems()}
+              <div className="menu-body">{renderItems()}</div>
             </Popper>
           </div>
         )}
@@ -72,6 +72,14 @@ const Wrapper = styled.div`
   // Menu items
   .menu-items {
     width: 224px;
+  }
+
+  .menu-body {
+    overflow-y: auto;
+  }
+
+  .menu-popper {
+    padding-bottom: 8px;
   }
 `;
 

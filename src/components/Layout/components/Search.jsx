@@ -67,6 +67,7 @@ const Search = () => {
       <HeadlessTippy
         visible={showResults && searchResults.length > 0}
         interactive={true}
+        appendTo={() => document.body}
         render={(attrs) => (
           <div className="search-result" tabIndex={1} {...attrs}>
             <Popper>

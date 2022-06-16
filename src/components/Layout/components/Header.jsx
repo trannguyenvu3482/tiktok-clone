@@ -1,8 +1,4 @@
 import Tippy from '@tippyjs/react/';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import 'tippy.js/dist/tippy.css';
-
 import { BiUser } from 'react-icons/bi';
 import { FaCoins } from 'react-icons/fa';
 import { HiPlus } from 'react-icons/hi';
@@ -13,12 +9,15 @@ import {
   MdOutlineLogout,
   MdOutlineSettings,
 } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import 'tippy.js/dist/tippy.css';
 
 import TiktokLogo from '~/assets/images/TiktokLogo.svg';
 import { Button, Image, PopperMenu } from '~/components';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
-import { Search } from '../../Layout/components';
 import { routes as routesConfig } from '~/config';
+import { Search } from '../../Layout/components';
 
 const MENU_ITEMS = [
   {
@@ -144,21 +143,20 @@ const Header = () => {
   );
 };
 
-// Styling
-const localVars = {
-  searchBorderRadius: 92,
-  searchHeight: 46,
-  searchTopSpacer: 6,
-  searchButtonWidth: 52,
-};
-
 const Wrapper = styled.header`
-  width: 100%;
-  height: 60px;
-  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 10;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  height: 60px;
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
 
   .logo {
     display: flex;

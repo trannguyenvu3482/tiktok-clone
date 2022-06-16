@@ -22,6 +22,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     margin-top: -8px;
+    flex-shrink: 0;
   }
 
   .back-btn {
