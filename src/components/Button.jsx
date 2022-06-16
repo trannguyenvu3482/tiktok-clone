@@ -1,4 +1,4 @@
-import React from 'react';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -62,6 +62,10 @@ const Button = ({
       </Comp>
     </Wrapper>
   );
+};
+
+Button.propTypes = {
+  children: propTypes.node.isRequired,
 };
 
 const Wrapper = styled.div`
@@ -151,6 +155,7 @@ const Wrapper = styled.div`
       text-decoration: underline;
     }
   }
+
   // Icon
   .icon {
     display: inline-flex;

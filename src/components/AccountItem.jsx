@@ -1,5 +1,7 @@
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
 import { Image } from '../components';
 import { FaCheckCircle } from 'react-icons/fa';
 const AccountItem = ({ data }) => {
@@ -17,6 +19,10 @@ const AccountItem = ({ data }) => {
       </Wrapper>
     </Link>
   );
+};
+
+AccountItem.propTypes = {
+  data: propTypes.object.isRequired,
 };
 
 const Wrapper = styled.div`
