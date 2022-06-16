@@ -86,7 +86,7 @@ const Header = () => {
     <Wrapper>
       <div className="inner">
         <div className="logo">
-          <Link to={routes.home} class="logo-link">
+          <Link to={routes.home} className="logo-link">
             <img src={TiktokLogo} alt="Tiktok" />
           </Link>
         </div>
@@ -127,7 +127,7 @@ const Header = () => {
             {currentUser ? (
               <Image
                 className="user-avatar"
-                src="https://p16-sin-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/65d3c6b1d1e205c75536ccf1f26d552d~c5_100x100.jpeg?x-expires=1655434800&x-signature=KeYcNFDCc2W7Z7LTmzAgbPaqR2Y%3D"
+                src=""
                 alt="Nguyen Van B"
                 fallback="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/262195195_1942176485962349_3255690939105831461_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7_QS25WWdjcAX_7jEEW&_nc_ht=scontent.fsgn5-5.fna&oh=00_AT8hh7wKW2HVlkQ4n91r0y0PGYHBiJyrfqijutumZ10uKg&oe=62AF459E"
               />

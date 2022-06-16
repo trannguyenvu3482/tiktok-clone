@@ -15,5 +15,9 @@ const Wrapper = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+
+  .menu-popper {
+    padding-bottom: 8px;
+  }
 `;
 export default Popper;
