@@ -6,7 +6,12 @@ import { Popper, PopperMenuItem, PopperMenuHeader } from '~/components';
 
 const defFunc = () => {};
 
-const PopperMenu = ({ children, items = [], onChange = defFunc }) => {
+const PopperMenu = ({
+  children,
+  items = [],
+  onChange = defFunc,
+  hideOnClick = false,
+}) => {
   const [history, setHistory] = useState([{ data: items }]);
   const current = history[history.length - 1];
 
@@ -37,6 +42,7 @@ const PopperMenu = ({ children, items = [], onChange = defFunc }) => {
         delay={[0, 500]}
         offset={[12, 8]}
         placement="bottom-end"
+        hideOnClick={hideOnClick}
         render={(attrs) => (
           <div className="menu-items" tabIndex="-1" {...attrs}>
             <Popper className="menu-popper">

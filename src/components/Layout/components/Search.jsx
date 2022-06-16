@@ -51,6 +51,17 @@ const Search = () => {
     setShowResults(false);
   };
 
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+
+    if (searchValue.startsWith(' ')) return;
+    setSearchValue(searchValue);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Wrapper>
       <HeadlessTippy
@@ -75,10 +86,7 @@ const Search = () => {
             spellCheck="false"
             value={searchValue}
             ref={inputRef}
-            onChange={(e) => {
-              if (e.target.value.startsWith(' ')) return;
-              setSearchValue(e.target.value);
-            }}
+            onChange={handleChange}
             onFocus={() => setShowResults(true)}
           />
 
@@ -90,7 +98,13 @@ const Search = () => {
 
           {loading && <FaSpinner className="loading" />}
 
-          <button className="search-btn">{<SearchIcon />}</button>
+          <button
+            className="search-btn"
+            onClick={handleSubmit}
+            onMouseDown={(e) => e.preventDefault()}
+          >
+            {<SearchIcon />}
+          </button>
         </div>
       </HeadlessTippy>
     </Wrapper>
@@ -126,6 +140,7 @@ const Wrapper = styled.div`
       height: 100%;
       padding: 12px 0;
       color: ${globalVars.black};
+      font-family: 'ProximaNova', sans-serif;
       font-size: 1.6rem;
       background-color: transparent;
       caret-color: red;
@@ -159,6 +174,9 @@ const Wrapper = styled.div`
     }
 
     .search-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: ${localVars.searchButtonWidth}px;
       height: 100%;
       border-top-right-radius: ${localVars.searchBorderRadius}px;

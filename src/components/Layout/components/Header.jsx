@@ -1,4 +1,5 @@
 import Tippy from '@tippyjs/react/';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import 'tippy.js/dist/tippy.css';
 
@@ -17,6 +18,7 @@ import TiktokLogo from '~/assets/images/TiktokLogo.svg';
 import { Button, Image, PopperMenu } from '~/components';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 import { Search } from '../../Layout/components';
+import { routes as routesConfig } from '~/config';
 
 const MENU_ITEMS = [
   {
@@ -85,7 +87,9 @@ const Header = () => {
     <Wrapper>
       <div className="inner">
         <div className="logo">
-          <img src={TiktokLogo} alt="Tiktok" />
+          <Link to={routesConfig.home} class="logo-link">
+            <img src={TiktokLogo} alt="Tiktok" />
+          </Link>
         </div>
 
         <Search />
@@ -157,6 +161,10 @@ const Wrapper = styled.header`
   align-items: center;
 
   .logo {
+    display: flex;
+  }
+
+  .logo-link {
     display: flex;
   }
 
