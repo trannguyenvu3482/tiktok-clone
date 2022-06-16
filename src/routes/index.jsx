@@ -1,15 +1,22 @@
+// Pages
 import { Home, Following, Profile, Upload, Search } from '../pages';
-import { DefaultLayout, HeaderOnly } from '../components/Layout';
-import { routes as routesConfig } from '~/config';
 
+// Layouts
+import { DefaultLayout, HeaderOnly } from '~/layouts';
+
+// Config
+import { routes } from '~/config';
+
+// Public routes
 const publicRoutes = [
-  { path: routesConfig.home, component: Home, layout: DefaultLayout },
-  { path: routesConfig.following, component: Following, layout: DefaultLayout },
-  { path: routesConfig.profile, component: Profile, layout: DefaultLayout },
-  { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
-  { path: routesConfig.search, component: Search, layout: null },
+  { path: routes.home, component: Home, layout: DefaultLayout },
+  { path: routes.following, component: Following, layout: DefaultLayout },
+  { path: routes.profile, component: Profile, layout: DefaultLayout },
+  { path: routes.upload, component: Upload, layout: HeaderOnly },
+  { path: routes.search, component: Search, layout: null },
 ];
 
+// Private routes
 const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };

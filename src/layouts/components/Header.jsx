@@ -16,8 +16,8 @@ import 'tippy.js/dist/tippy.css';
 import TiktokLogo from '~/assets/images/TiktokLogo.svg';
 import { Button, Image, PopperMenu } from '~/components';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
-import { routes as routesConfig } from '~/config';
-import { Search } from '../../Layout/components';
+import { routes } from '~/config';
+import { Search } from '.';
 
 const MENU_ITEMS = [
   {
@@ -86,7 +86,7 @@ const Header = () => {
     <Wrapper>
       <div className="inner">
         <div className="logo">
-          <Link to={routesConfig.home} class="logo-link">
+          <Link to={routes.home} class="logo-link">
             <img src={TiktokLogo} alt="Tiktok" />
           </Link>
         </div>

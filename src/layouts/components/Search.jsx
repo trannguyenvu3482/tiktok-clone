@@ -5,7 +5,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { FaSpinner } from 'react-icons/fa';
 
-import * as searchServices from '~/utils/apiServices/searchServices';
+import { searchService } from '~/services';
 import { variables as globalVars, Popper, AccountItem } from '~/components';
 import { useDebounce } from '~/hooks';
 import { SearchIcon } from '~/components/Icons';
@@ -29,7 +29,7 @@ const Search = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const result = await searchServices.search(debounced);
+        const result = await searchService.search(debounced);
         setSearchResults(result.data);
         setLoading(false);
       } catch (error) {
