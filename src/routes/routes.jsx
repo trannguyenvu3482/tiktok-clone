@@ -1,5 +1,5 @@
 // Pages
-import { Home, Following, Profile, Upload, Search } from '../pages';
+import { Home, Following, Profile, Upload, Search, Live } from '../pages';
 
 // Layouts
 import { DefaultLayout, HeaderOnly } from '~/layouts';
@@ -14,6 +14,7 @@ const publicRoutes = [
   { path: routes.profile, component: Profile, layout: DefaultLayout },
   { path: routes.upload, component: Upload, layout: HeaderOnly },
   { path: routes.search, component: Search, layout: null },
+  { path: routes.live, component: Live, layout: DefaultLayout },
 ];
 
 // Private routes

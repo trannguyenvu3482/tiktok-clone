@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Header } from '../components';
+import { Sidebar } from '../components/Sidebar';
 import { variables } from '~/components';
-import Sidebar from './Sidebar';
 import styled from 'styled-components';
 
 const DefaultLayout = ({ children }) => {
@@ -27,9 +27,10 @@ const Wrapper = styled.div`
 
   .container {
     width: ${variables.defaultLayoutWidth};
-    display: flex;
+    max-width: 100%;
     padding: 0 ${variables.defaultLayoutHorizontalSpacer};
     margin-top: ${variables.defaultLayoutHeaderHeight};
+    display: flex;
   }
 
   .content {
