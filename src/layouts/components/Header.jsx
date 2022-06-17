@@ -1,4 +1,5 @@
 import Tippy from '@tippyjs/react/';
+
 import { BiUser } from 'react-icons/bi';
 import { FaCoins } from 'react-icons/fa';
 import { HiPlus } from 'react-icons/hi';
@@ -116,7 +117,9 @@ const Header = () => {
               <Button thin leftIcon={<HiPlus />}>
                 Upload
               </Button>
-              <Button primary>Log in</Button>
+              <Button primary href="/">
+                Log in
+              </Button>
             </>
           )}
 
@@ -189,6 +192,12 @@ const Wrapper = styled.header`
       &-icon {
         font-size: 2.4rem;
       }
+    }
+
+    .action-btn:first-of-type {
+      margin-left: 7px;
+      top: 0;
+      margin-right: -5px;
     }
 
     .more-btn {

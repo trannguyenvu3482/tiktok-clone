@@ -94,6 +94,7 @@ const Wrapper = styled.div`
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    height: 36px;
 
     font-size: 1.6rem;
     font-weight: 700;

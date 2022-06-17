@@ -13,15 +13,15 @@ import { SearchIcon } from '~/components/Icons';
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [showResults, setShowResults] = useState(true);
+  const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const debounced = useDebounce(searchValue, 500);
+  const debouncedValue = useDebounce(searchValue, 500);
 
   const inputRef = useRef();
 
   useEffect(() => {
-    if (!debounced.trim()) {
+    if (!debouncedValue.trim()) {
       setSearchResults([]);
       return;
     }
@@ -29,7 +29,7 @@ const Search = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const result = await searchService.search(debounced);
+        const result = await searchService.search(debouncedValue);
         setSearchResults(result.data);
         setLoading(false);
       } catch (error) {
@@ -39,7 +39,7 @@ const Search = () => {
 
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debounced]);
+  }, [debouncedValue]);
 
   const handleClear = () => {
     setSearchValue('');
@@ -134,6 +134,7 @@ const Wrapper = styled.div`
     border-radius: ${localVars.searchBorderRadius}px;
     padding-left: 16px;
     border: 1.5px solid transparent;
+    margin-left: -4px;
 
     input {
       flex: 1;
@@ -144,6 +145,7 @@ const Wrapper = styled.div`
       font-size: 1.6rem;
       background-color: transparent;
       caret-color: red;
+      padding-right: 40px;
     }
 
     input:not(:placeholder-shown) ~ .search-btn {

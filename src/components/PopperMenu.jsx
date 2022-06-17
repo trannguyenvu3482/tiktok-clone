@@ -36,6 +36,26 @@ const PopperMenu = ({
     });
   };
 
+  const handleBack = () => {
+    setHistory((prev) => prev.slice(0, prev.length - 1));
+  };
+
+  const renderResult = (attrs) => (
+    <div className="menu-items" tabIndex="-1" {...attrs}>
+      <Popper className="menu-popper">
+        {history.length > 1 && (
+          <PopperMenuHeader title={current.title} onBack={handleBack} />
+        )}
+        <div className="menu-body">{renderItems()}</div>
+      </Popper>
+    </div>
+  );
+
+  // Reset menu to first page
+  const handleResetMenu = () => {
+    setHistory((prev) => prev.slice(0, 1));
+  };
+
   return (
     <Wrapper>
       <Tippy
@@ -44,24 +64,8 @@ const PopperMenu = ({
         offset={[12, 8]}
         placement="bottom-end"
         hideOnClick={hideOnClick}
-        render={(attrs) => (
-          <div className="menu-items" tabIndex="-1" {...attrs}>
-            <Popper className="menu-popper">
-              {history.length > 1 && (
-                <PopperMenuHeader
-                  title={current.title}
-                  onBack={() => {
-                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                  }}
-                />
-              )}
-              <div className="menu-body">{renderItems()}</div>
-            </Popper>
-          </div>
-        )}
-        onHide={() => {
-          setHistory((prev) => prev.slice(0, 1));
-        }}
+        render={renderResult}
+        onHide={handleResetMenu}
       >
         {children}
       </Tippy>
