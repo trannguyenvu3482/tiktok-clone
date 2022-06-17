@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FiChevronLeft } from 'react-icons/fi';
 
@@ -13,6 +13,11 @@ const PopperMenuHeader = ({ title, onBack }) => {
       </header>
     </Wrapper>
   );
+};
+
+PopperMenuHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  onBack: PropTypes.func.isRequired,
 };
 
 const Wrapper = styled.div`

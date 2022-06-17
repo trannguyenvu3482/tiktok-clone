@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -22,7 +22,7 @@ const AccountItem = ({ data }) => {
 };
 
 AccountItem.propTypes = {
-  data: propTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 const Wrapper = styled.div`

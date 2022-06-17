@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -65,7 +65,21 @@ const Button = ({
 };
 
 Button.propTypes = {
-  children: propTypes.node.isRequired,
+  to: PropTypes.string,
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+  outline: PropTypes.bool,
+  primary: PropTypes.bool,
+  small: PropTypes.bool,
+  large: PropTypes.bool,
+  text: PropTypes.bool,
+  disabled: PropTypes.bool,
+  rounded: PropTypes.bool,
+  thin: PropTypes.bool,
+  leftIcon: PropTypes.node,
+  rightIcon: PropTypes.node,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 const Wrapper = styled.div`

@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Header } from '../components';
 import { variables } from '~/components';
 import Sidebar from './Sidebar';
@@ -14,6 +14,10 @@ const DefaultLayout = ({ children }) => {
       </div>
     </Wrapper>
   );
+};
+
+DefaultLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 const Wrapper = styled.div`

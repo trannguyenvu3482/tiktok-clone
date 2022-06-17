@@ -1,7 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 const Popper = ({ children, className = '' }) => {
   return <Wrapper className={className}>{children}</Wrapper>;
+};
+
+Popper.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
 
 const Wrapper = styled.div`
