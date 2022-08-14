@@ -128,12 +128,7 @@ const Header = () => {
             onChange={handleMenuChange}
           >
             {currentUser ? (
-              <Image
-                className="user-avatar"
-                src=""
-                alt="Nguyen Van B"
-                fallback="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/262195195_1942176485962349_3255690939105831461_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7_QS25WWdjcAX_7jEEW&_nc_ht=scontent.fsgn5-5.fna&oh=00_AT8hh7wKW2HVlkQ4n91r0y0PGYHBiJyrfqijutumZ10uKg&oe=62AF459E"
-              />
+              <Image className="user-avatar" src="" alt="Nguyen Van B" />
             ) : (
               <button className="more-btn">
                 <IoEllipsisVertical />

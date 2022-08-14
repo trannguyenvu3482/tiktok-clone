@@ -9,6 +9,7 @@ import {
   LiveIcon,
   LiveIconActive,
 } from '~/components/Icons';
+import { SuggestedAccounts } from '../SuggestedAccounts';
 
 const Sidebar = () => {
   return (
@@ -33,6 +34,8 @@ const Sidebar = () => {
           activeIcon={<LiveIconActive />}
         />
       </SidebarMenu>
+
+      <SuggestedAccounts label="Suggested accounts" />
     </Wrapper>
   );
 };
