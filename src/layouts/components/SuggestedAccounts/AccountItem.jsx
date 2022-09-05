@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import Tippy from '@tippyjs/react';
 import PropTypes from 'prop-types';
 import { FaCheckCircle } from 'react-icons/fa';
-import Tippy from '@tippyjs/react';
+import styled from 'styled-components';
 
 import { Popper } from '~/components';
 import { AccountPreview } from './AccountPreview';

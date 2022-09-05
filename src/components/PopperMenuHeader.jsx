@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { FiChevronLeft } from 'react-icons/fi';
+import styled from 'styled-components';
 
 const PopperMenuHeader = ({ title, onBack }) => {
   return (

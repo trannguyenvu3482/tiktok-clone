@@ -1,5 +1,5 @@
-import { useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { forwardRef, useState } from 'react';
 import images from '~/assets/images';
 
 const Image = forwardRef(

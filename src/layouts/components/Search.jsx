@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import HeadlessTippy from '@tippyjs/react/headless';
-import { IoMdCloseCircle } from 'react-icons/io';
 import { FaSpinner } from 'react-icons/fa';
+import { IoMdCloseCircle } from 'react-icons/io';
 
-import { searchService } from '~/services';
-import { variables as globalVars, Popper, AccountItem } from '~/components';
-import { useDebounce } from '~/hooks';
+import { AccountItem, Popper, variables as globalVars } from '~/components';
 import { SearchIcon } from '~/components/Icons';
+import { useDebounce } from '~/hooks';
+import { searchService } from '~/services';
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');

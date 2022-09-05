@@ -1,5 +1,5 @@
 // Pages
-import { Home, Following, Profile, Upload, Search, Live } from '../pages';
+import { Following, Home, Live, Profile, Search, Upload } from '../pages';
 
 // Layouts
 import { DefaultLayout, HeaderOnly } from '~/layouts';

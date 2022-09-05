@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { variables } from '~/components';
 import { Header } from '../components';
 import { Sidebar } from '../components/Sidebar';
-import { variables } from '~/components';
-import styled from 'styled-components';
 
 const DefaultLayout = ({ children }) => {
   return (

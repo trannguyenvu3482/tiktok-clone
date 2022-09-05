@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SidebarMenuItem = ({ title, to, icon, activeIcon }) => {

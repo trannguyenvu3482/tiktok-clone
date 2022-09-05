@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { SidebarMenu, SidebarMenuItem } from './Menu';
-import { routes } from '~/config';
 import {
   HomeIcon,
   HomeIconActive,
-  UserGroupIcon,
-  UserGroupIconActive,
   LiveIcon,
   LiveIconActive,
+  UserGroupIcon,
+  UserGroupIconActive,
 } from '~/components/Icons';
+import { routes } from '~/config';
 import { SuggestedAccounts } from '../SuggestedAccounts';
+import { SidebarMenu, SidebarMenuItem } from './Menu';
 
 const Sidebar = () => {
   return (

@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Image } from '../components';
 import { FaCheckCircle } from 'react-icons/fa';
+import { Image } from '../components';
 const AccountItem = ({ data }) => {
   return (
     <Link to={`/@${data.nickname}`}>

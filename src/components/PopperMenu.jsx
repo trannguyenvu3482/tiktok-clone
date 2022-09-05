@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Tippy from '@tippyjs/react/headless';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import styled from 'styled-components';
 
-import { Popper, PopperMenuItem, PopperMenuHeader } from '~/components';
+import { Popper, PopperMenuHeader, PopperMenuItem } from '~/components';
 
 const defFunc = () => {};
 
