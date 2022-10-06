@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import { FaCheckCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import { Button } from '~/components';
 
-const AccountPreview = () => {
+const AccountPreview = ({ data }) => {
   return (
     <Wrapper>
       <header className="header">
-        <img src="https://picsum.photos/50" alt="avatar" className="avatar" />
+        <img src={data.avatar} alt="avatar" className="avatar" />
         <Button className="follow-btn" primary small>
           Follow
         </Button>
@@ -14,20 +15,24 @@ const AccountPreview = () => {
 
       <div className="body">
         <p className="nickname">
-          <strong>johnnydang</strong>
+          <strong>{data.nickname}</strong>
           <FaCheckCircle className="check" />
         </p>
-        <p className="name">Johnny Dang</p>
+        <p className="name">{data.first_name + ' ' + data.last_name}</p>
 
         <p className="analytics">
-          <strong className="value">6.7M</strong>
+          <strong className="value">{data.followers_count}</strong>
           <span className="label">Followers</span>
-          <strong className="value">10M</strong>
+          <strong className="value">{data.likes_count}</strong>
           <span className="label">Likes</span>
         </p>
       </div>
     </Wrapper>
   );
+};
+
+AccountPreview.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 const Wrapper = styled.div`

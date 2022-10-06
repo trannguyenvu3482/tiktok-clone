@@ -2,25 +2,27 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AccountItem from './AccountItem';
 
-const SuggestedAccounts = ({ label }) => {
+const SuggestedAccounts = ({ label, data = [], onViewChange, isSeeAll }) => {
   return (
     <Wrapper>
       <div className="line"></div>
 
       <p className="label">{label}</p>
-      <AccountItem />
-      <AccountItem />
-      <AccountItem />
-      <AccountItem />
-      <AccountItem />
 
-      <p className="more-btn">See all</p>
+      {data.map((account) => {
+        return <AccountItem key={account.id} data={account} />;
+      })}
+
+      <p className="more-btn" onClick={onViewChange}>
+        {isSeeAll ? 'See less' : 'See all'}
+      </p>
     </Wrapper>
   );
 };
 
 SuggestedAccounts.propTypes = {
   label: PropTypes.string.isRequired,
+  data: PropTypes.array,
 };
 
 const Wrapper = styled.div`

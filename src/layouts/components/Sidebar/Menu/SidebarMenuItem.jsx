@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SidebarMenuItem = ({ title, to, icon, activeIcon }) => {
   return (
-    <Wrapper activeClassName="active" to={to}>
+    <Wrapper activeclassname="active" to={to}>
       <span className="icon">{icon}</span>
       <span className="active-icon">{activeIcon}</span>
       <span className="title">{title}</span>

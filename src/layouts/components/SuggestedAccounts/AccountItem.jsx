@@ -6,13 +6,13 @@ import styled from 'styled-components';
 import { Popper } from '~/components';
 import { AccountPreview } from './AccountPreview';
 
-const AccountItem = () => {
+const AccountItem = ({ data }) => {
   const renderPreview = (props) => {
     return (
       <div tabIndex="-1" {...props}>
         <Popper>
           <div className="preview">
-            <AccountPreview />
+            <AccountPreview data={data} />
           </div>
         </Popper>
       </div>
@@ -29,17 +29,21 @@ const AccountItem = () => {
       animation={false}
     >
       <WrapperInside>
-        <img className="avatar" src="https://picsum.photos/50" alt="avatar" />
+        <img className="avatar" src={data.avatar} alt="avatar" />
         <div className="item-info">
           <p className="nickname">
-            <strong>johnnydang</strong>
-            <FaCheckCircle className="check" />
+            <strong>{data.nickname}</strong>
+            {data.tick && <FaCheckCircle className="check" />}
           </p>
-          <p className="name">Johnny Dang</p>
+          <p className="name">{data.first_name + ' ' + data.last_name}</p>
         </div>
       </WrapperInside>
     </Tippy>
   );
+};
+
+AccountItem.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 AccountItem.propTypes = {};
